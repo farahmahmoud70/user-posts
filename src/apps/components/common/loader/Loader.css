@@ -1,0 +1,23 @@
+.loader-container {
+    background-color: rgba(245, 246, 250, 0.8);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+  }
+  
+  .loader-icon {
+    width: 140px;
+  }
+  
+  .loader-text {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--primary-title-color);
+  }
+  
