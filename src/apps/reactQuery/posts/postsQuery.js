@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { fetchUserPosts } from "./postsApi";
 
 export const useUserPostsQuery = (id) => {
@@ -30,9 +30,8 @@ export const useUserPostsQuery = (id) => {
   //     status,
   //   };
 
-  const { isLoading, isError, data, error } = useQuery(
-    "posts",
-    async () => await fetchUserPosts(id)
+  const { isLoading, isError, data, error } = useQuery(`posts_${id}`, () =>
+    fetchUserPosts(id)
   );
 
   return {
