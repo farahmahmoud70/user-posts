@@ -3,6 +3,7 @@ import Loader from "../common/loader/Loader";
 import Grid from "../grid/Grid";
 import loaderIcon from "../../style/images/loader.gif";
 import { useNavigate } from "react-router-dom";
+import Toast from "../common/toast/Toast";
 import "./Users.css";
 
 const Users = () => {
@@ -10,8 +11,18 @@ const Users = () => {
 
   const navigate = useNavigate();
 
-  console.log(isError)
-  console.log(error)
+  const handleErrors = () => {
+    return isError
+      ? [
+          {
+            id: 1,
+            title: "Error",
+            description: error.message,
+            type: "error",
+          },
+        ]
+      : [];
+  };
 
   const onPostsClick = (id, name) => {
     navigate("/user-posts", { state: { id, name } });
@@ -21,6 +32,7 @@ const Users = () => {
     <Loader loaderIcon={loaderIcon} />
   ) : (
     <div className="users-container">
+      <Toast toastList={handleErrors()} position="top-right" />
       <h2>{"Users"}</h2>
       <Grid data={data} onPostsClick={onPostsClick} />
     </div>
